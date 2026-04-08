@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;400;600;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Palette (HSL) */
+  --dark-spruce: hsla(118, 28%, 22%, 1);
+  --dusty-olive: hsla(117, 9%, 50%, 1);
+  --hunter-green: hsla(111, 22%, 34%, 1);
+  --white: hsla(0, 0%, 100%, 1);
+  --dusty-olive-2: hsla(116, 13%, 40%, 1);
+
+  /* Semantic tokens */
+  /* Semantic tokens (light base similar to previous theme) */
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --border: #e6e9ef;
+  --accent: var(--dark-spruce);
+  --warn:   #ff7a59;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --text-on-dark: var(--white);
+  --text-on-panel: var(--text);
+
+  /* Gradients */
+  --gradient-top: linear-gradient(0deg, #2A4929, #768B75, #4A6A44, #FEFEFE, #5A7358);
+  --gradient-right: linear-gradient(90deg, #2A4929, #768B75, #4A6A44, #FEFEFE, #5A7358);
+  --gradient-bottom: linear-gradient(180deg, #2A4929, #768B75, #4A6A44, #FEFEFE, #5A7358);
+  --gradient-left: linear-gradient(270deg, #2A4929, #768B75, #4A6A44, #FEFEFE, #5A7358);
+  --gradient-top-right: linear-gradient(45deg, #2A4929, #768B75, #4A6A44, #FEFEFE, #5A7358);
+  --gradient-bottom-right: linear-gradient(135deg, #2A4929, #768B75, #4A6A44, #FEFEFE, #5A7358);
+  --gradient-top-left: linear-gradient(225deg, #2A4929, #768B75, #4A6A44, #FEFEFE, #5A7358);
+  --gradient-bottom-left: linear-gradient(315deg, #2A4929, #768B75, #4A6A44, #FEFEFE, #5A7358);
+  --gradient-radial: radial-gradient(circle, #2A4929 0%, #768B75 25%, #4A6A44 50%, #FEFEFE 75%, #5A7358 100%);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+}
+
+.grid-bg {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.03) 40px);
+}
+
+.card {
+  background: var(--panel);
+  color: var(--text-on-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(15,23,42,0.06);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(42,73,41,0.9), transparent);
+}
+
+.btn-primary {
+  background: var(--dark-spruce);
+  border: none;
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.08s, box-shadow 0.15s, background 0.15s;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+.btn-primary:hover {
+  background: var(--dusty-olive);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.16);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.995);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  border-radius: 6px;
+  padding: 12px 16px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input:focus {
+  border-color: var(--dusty-olive-2);
+  box-shadow: 0 6px 20px rgba(90,115,88,0.08);
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dark-spruce);
+  animation: pulse-anim 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse-anim {
+  0%, 100% { opacity: 1; box-shadow: 0 0 12px rgba(42,73,41,0.18); }
+  50%       { opacity: 0.45; box-shadow: none; }
+}
+
+.mono { font-family: 'Share Tech Mono', monospace; }

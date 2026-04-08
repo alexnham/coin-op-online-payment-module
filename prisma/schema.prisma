@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  name          String?
+  passwordHash  String?
+  credits       Int        @default(0)
+  role          Role       @default(USER)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  purchases     Purchase[]
+  cycleUses     CycleUse[]
+  sessions      Session[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Purchase {
+  id              String         @id @default(cuid())
+  userId          String
+  stripeSessionId String         @unique
+  stripePaymentId String?
+  amount          Int
+  creditsAdded    Int
+  status          PurchaseStatus @default(PENDING)
+  createdAt       DateTime       @default(now())
+  user            User           @relation(fields: [userId], references: [id])
+}
+
+model Machine {
+  id        String     @id @default(cuid())
+  name      String
+  location  String
+  espIp     String
+  apiKey    String     @unique @default(cuid())
+  isOnline  Boolean    @default(false)
+  lastSeen  DateTime?
+  createdAt DateTime   @default(now())
+  cycleUses CycleUse[]
+  jobs      Job[]
+}
+
+model Job {
+  id          String    @id @default(cuid())
+  machineId   String
+  cycleUseId  String?   @unique
+  status      JobStatus @default(PENDING)
+  createdAt   DateTime  @default(now())
+  claimedAt   DateTime?
+  completedAt DateTime?
+  machine     Machine   @relation(fields: [machineId], references: [id])
+}
+
+model CycleUse {
+  id          String   @id @default(cuid())
+  userId      String
+  machineId   String
+  creditsUsed Int      @default(1)
+  success     Boolean
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+  machine     Machine  @relation(fields: [machineId], references: [id])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum JobStatus {
+  PENDING
+  CLAIMED
+  DONE
+  FAILED
+}
+
+enum PurchaseStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
