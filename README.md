@@ -2,7 +2,7 @@
 
 gardenwood laundry is a hybrid payment system that bridges physical coin-operated machines with modern online payments. It enables users to trigger machine cycles (e.g., laundry, vending, etc.) through a web app while maintaining compatibility with traditional coin-drop mechanisms.
 
-![App screenshot](images/screenshot-2026-04-08-18-42-22.png)
+	![App screenshot](images/screenshot-2026-04-08-18-42-22.jpg)
 
 **Environment variables**
 
@@ -19,16 +19,17 @@ Store real values in a `.env` file or your deployment's secret manager and never
 
 **Screenshots**
 
-- App UI (PNG):
+- App UI:
 
 	![App screenshot](images/screenshot-2026-04-08-18-42-22.png)
 
-- Photos (HEIC):
+- Photos:
 
-	![IMG 4752](images/img-4752.heic)
+	![IMG 4752](images/img-4752.jpg)
 
-	![IMG 4762](images/img-4762.heic)
+	![IMG 4762](images/img-4762.jpg)
 
-	![IMG 4781](images/img-4781.heic)
+	![IMG 4781](images/img-4781.jpg)
 
+	![IMG 9646](images/img_9646.jpeg)
 
