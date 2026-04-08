@@ -31,5 +31,5 @@ Store real values in a `.env` file or your deployment's secret manager and never
 
 	![IMG 4781](images/img-4781.jpg)
 
-	![IMG 9646](images/img_9646.jpg)
+	![IMG 9646](images/img-9646.jpg)
 
