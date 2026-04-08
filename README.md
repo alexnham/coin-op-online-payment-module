@@ -2,6 +2,8 @@
 
 gardenwood laundry is a hybrid payment system that bridges physical coin-operated machines with modern online payments. It enables users to trigger machine cycles (e.g., laundry, vending, etc.) through a web app while maintaining compatibility with traditional coin-drop mechanisms.
 
+This was one of the most rewarding projects I've ever worked on. Working in a domain I had little to no experience in (Hardware), I was able to figure out an intuitive solution that worked for my needs.
+
 **Environment variables**
 
 - **DATABASE_URL**: Postgres connection string used by Prisma (e.g., `postgresql://user:password@host:5432/laundryapp`).
